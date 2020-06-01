@@ -1,0 +1,39 @@
+---
+layout: examples
+title: Signin Template
+extra_css: "signin.css"
+body_class: "text-center"
+include_js: false
+---
+<div class="mx-auto" style="width: 400px;">
+<form class="form-signin">{% csrf_token %}
+  <img class="mb-4" src="#" /docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal"> sign in</h1>
+    {% for field in login_form %}
+        <p>
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.help_text %}
+                <small style="color: grey;">{{ field.help_text }}</small>
+            {% endif %}
+        </p>
+    {% endfor %}
+
+    {% for field in login_form %}
+        {% for error in field.errors %}
+            <p style="color:grey;">{{ error }}</p>
+        {% endfor %}
+    {% endfor %}
+    {% if login_form.non_field_errors %}
+        <div style="'color:red;">
+            <p>{{ login_form.non_field_errors }}</p>
+        </div>
+    {% endif %}
+
+    <div class="checkbox mb-3">
+        <button type="button" class="btn btn-primary">Primary</button>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+</form>
+</div>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+
+{% block head %}
+{#    <link rel="stylesheet" href="{% static 'css/account/img.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'css/account/profile.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/account/btn.css' %}">
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/sakura.css' %}">#}
+{#    <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>#}
+{% endblock %}
+
+{% block content %}
+<h2> {{ user.username }} - {{ course.course_name }}</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+{#        <th scope="col">course_name</th>#}
+        <th scope="col">number</th>
+        <th scope="col">pdf_file</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for course in courses %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+{#            <td>{{ course.course.course_name }}</td>#}
+            <td>{{ course.number }}</td>
+            <td>{{ course.pdf_file }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

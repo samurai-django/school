@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+{% endblock %}
+
+{% block title %}Class View{% endblock %}
+
+{% block content %}
+
+
+    {{ account.name }}
+    {{ account.email }}
+
+
+
+{% endblock %}

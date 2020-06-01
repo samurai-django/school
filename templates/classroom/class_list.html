@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Class List{% endblock title %}
+
+
+{% block head %}
+{#    <link rel="stylesheet" href="{% static 'css/account/img.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/account/profile.css' %}">
+
+{#    <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>#}
+{% endblock %}
+
+{% block content %}
+{% if user.is_student %}
+    <form action="" method="get">
+        <label for="your_name">Search:</label>
+        <input name="query" value="{{ request.GET.query }}" type="text">
+        <button type="submit">検索する</button>
+    </form>
+
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <table border="1">
+                <tr>
+                    <th>URL</th>
+                    <th>Subject</th>
+                    <th>Semester</th>
+                    <th>Teacher</th>
+                    <th>choose</th>
+                </tr>
+                {% for class in classes %}
+                    <tr>
+                        <td><a href="{{ class.get_absolute_url }}">URL</a></td>
+                        <td>{{ class.get.subject_choice }}</td>
+                        <td>{{ class.semester }}</td>
+                        <td>{{ class.teacher.username }}</td>
+                        <td><input type="checkbox" name="checks[]" value="{{ class.get_subject }}"></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <input type="submit" value="送信">
+        </form>
+{% endif %}
+
+
+
+{% endblock %}

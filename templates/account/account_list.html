@@ -1,0 +1,309 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+
+{% block head %}
+{#    <link rel="stylesheet" href="{% static 'css/account/img.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'css/account/profile.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/account/btn.css' %}">
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/sakura.css' %}">#}
+{#    <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>#}
+{% endblock %}
+
+
+
+
+
+{% block content %}
+    <h2> {{ user.username }} - Class Shedule</h2>
+    <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Semester</th>
+          <th scope="col">Subjects</th>
+          <th scope="col">is_registered</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for class in classes %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ class.semester }}</td>
+          <td>{{ class.subjects }}</td>
+          <td>{{ class.is_registered }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+{##}
+{##}
+{##}
+{#        <h1 class="mt-4">New Message</h1>#}
+{##}
+{#{% if user.is_authenticated %}#}
+{#            <h1 class="mt-4">Message</h1>#}
+{##}
+{#    <form>#}
+{#        <div class="inline-block">#}
+{#            <input type="button" value="Check" onclick="hyoji1(0)">#}
+{#        </div>#}
+{#        <div class="inline-block">#}
+{#            <input type="button" value="hide" onclick="hyoji1(1)">#}
+{#        </div>#}
+{#    </form>#}
+{#    <div class="row">#}
+{#        <div id="disp">#}
+{#            <div class="card mt-3" style="width: 40rem">#}
+{#                <table class="table table-sm table-bordered mt-1 text-center" style="text-align: center">#}
+{#                  <thead>#}
+{#                        <th scope="col">author</th>#}
+{#                        <th scope="col">title</th>#}
+{#                        <th scope="col">text</th>#}
+{#                    </thead>#}
+{#                    {% for teacher in teachers %}#}
+{#                        <tr>#}
+{#                            <td>{{ teacher.author.username }}</td>#}
+{#                            <td>{{ teacher.title }}</td>#}
+{#                            <td>{{ teacher.content }}</td>#}
+{##}
+{#                        </tr>#}
+{#                    {% endfor %}#}
+{#                </table>#}
+{##}
+{#            <table>#}
+{#                <tr>#}
+{#                    <th scope="col">author</th>#}
+{#                    <th scope="col">title</th>#}
+{#                    <th scope="col">text</th>#}
+{#                </tr>#}
+{#                {% for teacher in teachers %}#}
+{#                    <tr>#}
+{#                        <td>{{ teacher.author.username }}</td>#}
+{#                        <td>{{ teacher.title }}</td>#}
+{#                        <td>{{ teacher.content }}</td>#}
+{#                    </tr>#}
+{##}
+{#                {% endfor %}#}
+{#            </table>#}
+{#        #}
+{##}
+{#            <table>#}
+{#                <tr class="heading">#}
+{#                    <th>author</th>#}
+{#                    <th>title</th>#}
+{#                    <th>text</th>#}
+{#                </tr>#}
+{#                {% for teacher in teachers %}#}
+{#                    <tr>#}
+{#                        <td class="car-name">#}
+{#                            {{ teacher.author.username }}#}
+{#                        </td>#}
+{##}
+{#                        <td>{{ teacher.title }}</td>#}
+{#                        <td>{{ teacher.content }}</td>#}
+{#                    </tr>#}
+{#                {% endfor %}#}
+{##}
+{#            </table>#}
+{##}
+{##}
+{##}
+{#        </div>#}
+{#        </div>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#      <section id="sakura">#}
+{#          <div class="inner">#}
+{#              <div class="flake1"></div>#}
+{#              <div class="flake2"></div>#}
+{#              <div class="flake3"></div>#}
+{#              <div class="flake4"></div>#}
+{#              <div class="flake5"></div>#}
+{#              <div class="flake6"></div>#}
+{#              <div class="flake7"></div>#}
+{#              <div class="flake8"></div>#}
+{#              <div class="flake9"></div>#}
+{#              <div class="flake10"></div>#}
+{#              <div class="flake11"></div>#}
+{#              <div class="flake12"></div>#}
+{#              <div class="flake13"></div>#}
+{#              <div class="flake14"></div>#}
+{#              <div class="flake15"></div>#}
+{#              <div class="flake16"></div>#}
+{#          </div>#}
+{#      </section>#}
+{##}
+{##}
+{#  page_obj#}
+{#      <ul class="pagination">#}
+{#          {% if page_obj.has_previous %}#}
+{#              <li class="page-item">#}
+{#                  <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="前へ">#}
+{#                      <span aria-hidden="true">&laquo;</span>#}
+{#                  </a>#}
+{#              </li>#}
+{#          {% endif %}#}
+{#          {% for page_num in page_obj.paginator.page_range %}#}
+{#              {% if page_num == page_obj.number %}#}
+{#                  <li class="page-item active">#}
+{#                      <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>#}
+{#                  </li>#}
+{#              {% else %}#}
+{#                  <li class="page-item">#}
+{#                      <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>#}
+{#                  </li>#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{##}
+{#          {% if page_obj.has_next %}#}
+{#              <li class="page-item">#}
+{#                  <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="次へ">#}
+{#                      <span aria-hidden="true">&raquo;</span>#}
+{#                  </a>#}
+{#              </li>#}
+{#    </div>#}
+{##}
+{#            {% endif %}#}
+{#        </ul>#}
+{##}
+{#    <div id="disp1">#}
+{##}
+{#        <div class="panel panel-primary mt-3">#}
+{#            {% if user.is_superuser %}#}
+{#                <div class="inline-block">#}
+{#                    <a href="#" class="button-student">Students</a>#}
+{#                </div>#}
+{#                <div class="inline-block">#}
+{#                    <a href="#" class="button-teacher">Teachers</a>#}
+{#                </div>#}
+{##}
+{#            {% endif %}#}
+{#                {% for account in accounts %}#}
+{#                    {% if user.is_teacher or  user.is_student %}#}
+{#{% if account.is_teacher or account.is_student or account.is_superuser %}#}
+{#                        <div class="card col-md-10 mb-2" style="width: 30rem;">#}
+{#                            <div class="profile-content">#}
+{#                                <div class="row no-gutters">#}
+{#                                    <div class="col-lg-5">#}
+{#                                        <div class="profile-user-pic">#}
+{#                                            <a href="{% url 'account_info' %}"><img src="{{ account.image.url }}" class="profile-img" alt=""></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                    <div class="col-lg-6">#}
+{#                                        <h5>{{ account.username }}</h5>#}
+{#                                        <p>{{ account.email }}</p>#}
+{#                                        {% if account.is_student %}#}
+{#                                            <p>student</p>#}
+{#                                        {% elif account.is_teacher %}#}
+{#                                            <p>teacher</p>#}
+{#                                        {% elif account.is_superuser %}#}
+{#                                            <p>superuser</p>#}
+{#                                        {% endif %}#}
+{#                                        {% for class in classes %}#}
+{#                                            {% if account.username == class.teacher.username %}#}
+{#                                                <p>{{ class.subject }}</p>#}
+{#                                            {% endif %}#}
+{#                                        {% endfor %}#}
+{#                                        {% for register in registers %}#}
+{#                                            {% if account.username == register.student.username %}#}
+{#                                            <p>{{ register.register_options }}</p>#}
+{#                                            {% endif %}#}
+{#                                        {% endfor %}#}
+{##}
+{#                                    </div>#}
+{##}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                {% endif %}#}
+{#            {% endif %}#}
+{##}
+{##}
+{#        {% endfor %}#}
+{##}
+{##}
+{#        </div>#}
+{#    </div>#}
+{#    <form>#}
+{#<input type="button" value="表示" onclick="hyoji2(0)">#}
+{#<input type="button" value="非表示" onclick="hyoji2(1)">#}
+{#</form>#}
+{#    <p>student</p>#}
+{##}
+{##}
+{#</div>#}
+{#{% else %}#}
+{#    <div class="mt-3">#}
+{#        <p>you are not logged in, would you like to log in? </p>#}
+{#        <a  type="button" class="btn btn-outline-secondary" href="{% url 'login_student' %}">Login</a>#}
+{##}
+{#    </div>#}
+{##}
+{##}
+{#{% endif %}#}
+{#    {% for post in posts %}#}
+{#        <div class="col-lg-6">#}
+{#            <h5>{{ post.author}}</h5>#}
+{#            <p>{{ post.title }}</p>#}
+{#        </div>#}
+{#      {% endfor %}#}
+{##}
+{#<script>#}
+{##}
+{#function hyoji1(num)#}
+{#{#}
+{#  if (num == 0)#}
+{#  {#}
+{#    document.getElementById("disp").style.display="block";#}
+{#  }#}
+{#  else#}
+{#  {#}
+{#    document.getElementById("disp").style.display="none";#}
+{#  }#}
+
+{##}
+{##}
+{#function hyoji2(num)#}
+{#{#}
+{#  if (num == 0)#}
+{#  {#}
+{#    document.getElementById("disp1").style.display="block";#}
+{#  }#}
+{#  else#}
+{#  {#}
+{#    document.getElementById("disp1").style.display="none";#}
+{#  }#}
+
+{##}
+{##}
+{##}
+{#</script>#}
+{##}
+{##}
+
+
+
+

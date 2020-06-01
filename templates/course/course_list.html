@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/account/btn.css' %}">
+{#    <script type="text/javascript" src="{% static 'js/course/add_course.js' %}"></script>#}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{% static 'js/course/add_course.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+    {% if user.is_student %}
+        <h2> {{ user.username }} - Choose course from this Course List</h2>
+        <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+
+            <th scope="col">teacher_name</th>
+            <th scope="col">course_name</th>
+            <th scope="col">subjects</th>
+            <th scope="col">semester</th>
+            <th scope="col">grades</th>
+            <th scope="col">Take this course</th>
+
+{#            <th scope="col">status</th>#}
+{#            <th scope="col">Check</th>#}
+        </tr>
+      </thead>
+      <tbody>
+      {% for course in courses %}
+
+          <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ course.id }}</td>
+          <td>{{ course.name }}</td>
+          <td>{{ course.course_name }}</td>
+          <td>{{ course.subjects }}</td>
+          <td>{{ course.semester }}</td>
+          <td>{{ course.grades }}</td>
+{#          <td><button data-courses="{{ course.id }}" data-action="add" class="btn btn-primary update_cart">Study</button></td>#}
+          <td><button id="update_cart" data-courses="{{ course.id }}" class="btn btn-primary update_cart" data-action="add" >Study</button></td>
+
+
+      {% endfor %}
+
+
+
+
+
+
+</tbody>
+</table>
+    {% elif user.is_teacher %}
+    <h2> {{ user.username }} - Class Schedule</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">course_name</th>
+            <th scope="col">subjects</th>
+            <th scope="col">semester</th>
+            <th scope="col">grades</th>
+            <th scope="col">status</th>
+            <th scope="col">Check</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for course in courses %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ course.course_name }}</td>
+            <td>{{ course.subjects }}</td>
+            <td>{{ course.semester }}</td>
+            <td>{{ course.grades }}</td>
+            {% if course.is_registered == False %}
+                <td>processing</td>
+            {% else %}
+                <td>Approved</td>
+{#                <td><a href="{% url 'add_course_detail' %}">Make Course Detail</a></td>#}
+            {% endif %}
+
+            {% if course.is_registered == True %}
+                <td><a href="{% url 'course_detail_list' course.pk %}">Course Detail</a></td>
+            {% else %}
+                <td>Please wait until Admin approve your course</td>
+            {% endif %}
+        </tr>
+      {% endfor %}
+    </tbody>
+        {% elif user.is_superuser %}
+        <p>Hi {{ user.username }}</p>
+         <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">teacher_name</th>
+            <th scope="col">course_name</th>
+            <th scope="col">subjects</th>
+            <th scope="col">semester</th>
+            <th scope="col">grades</th>
+            <th scope="col">status</th>
+            <th scope="col">Approve</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+      {% for course in courses %}
+          <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td>{{ course.name.username }}</td>
+              <td>{{ course.course_name }}</td>
+              <td>{{ course.subjects }}</td>
+              <td>{{ course.semester }}</td>
+              <td>{{ course.grades }}</td>
+              {% if course.is_registered == False %}
+                  <td><a href="{% url 'update' course.pk %}">processing</a></td>
+              {% else %}
+                  <td><a href="{% url 'add_course_detail' %}">Make Course Detail</a></td>
+              {% endif %}
+              <td><button data-course="{{ course.id }}" data-action="Approved" class="btn btn-outline-secondary add-btn approve-course">Approve</button></td>
+          </tr>
+      {% endfor %}
+      </tbody>
+    {% else %}
+        <p>would you like to login ?</p>
+        <a href="{% url 'login_def' %}">login</a>
+    {% endif %}
+</table>
+
+{% endblock %}

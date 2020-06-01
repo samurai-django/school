@@ -1,0 +1,210 @@
+body {
+    height: 100%;
+    background-size: 4px 20px;
+    padding-top: 70px;
+}
+
+
+section .inner div {
+    opacity: 0;
+    -webkit-transform-origin: 0px 0px;
+    -ms-transform-origin: 0px 0px;
+    transform-origin: 0px 0px;
+    -webkit-animation-name: Drop;
+    animation-name: Drop;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+
+.inner div {
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: url("https://liginc.co.jp/wp-content/uploads/2015/03/sakura.png") no-repeat;
+}
+
+
+#sakura .inner div.flake2,
+#sakura .inner div.flake4,
+#sakura .inner div.flake6,
+#sakura .inner div.flake8,
+#sakura .inner div.flake10,
+#sakura .inner div.flake12,
+#sakura .inner div.flake14 {
+    background-size: 5px 6px !important;
+}
+.flake1 {
+    top: 40px;
+    -webkit-animation-duration: 2.5s;
+    animation-duration: 2.5s;
+    z-index: 1
+}
+
+.flake2 {
+    top: 60px;
+    -webkit-animation-duration: 2.7s;
+    animation-duration: 2.7s;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+    z-index: 1
+}
+
+.flake3 {
+    top: 80px;
+    -webkit-animation-duration: 2.9s;
+    animation-duration: 2.9s;
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+    z-index: 1
+}
+
+.flake4 {
+    top: 100px;
+    -webkit-animation-duration: 2.4s;
+    animation-duration: 2.4s;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    z-index: 1
+}
+
+.flake5 {
+    top: 120px;
+    -webkit-animation-duration: 2.4s;
+    animation-duration: 2.4s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+.flake6 {
+    top: 150px;
+    -webkit-animation-duration: 2.2s;
+    animation-duration: 2.2s;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+}
+
+.flake7 {
+    top: 170px;
+    -webkit-animation-duration: 2.7s;
+    animation-duration: 2.7s;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+}
+
+.flake8 {
+    top: 200px;
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-delay: 1.4s;
+    animation-delay: 1.4s;
+}
+.flake9 {
+    top: 40px;
+    -webkit-animation-duration: 2.5s;
+    animation-duration: 2.5s;
+}
+
+.flake10 {
+    top: 60px;
+    -webkit-animation-duration: 2.7s;
+    animation-duration: 2.7s;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+.flake11 {
+    top: 80px;
+    -webkit-animation-duration: 2.9s;
+    animation-duration: 2.9s;
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+.flake12 {
+    top: 100px;
+    -webkit-animation-duration: 2.4s;
+    animation-duration: 2.4s;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.flake13 {
+    top: 120px;
+    -webkit-animation-duration: 2.4s;
+    animation-duration: 2.4s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+.flake14 {
+    top: 150px;
+    -webkit-animation-duration: 2.2s;
+    animation-duration: 2.2s;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+}
+
+.flake15 {
+    top: 170px;
+    -webkit-animation-duration: 2.7s;
+    animation-duration: 2.7s;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+}
+
+.flake16 {
+    top: 200px;
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-delay: 1.4s;
+    animation-delay: 1.4s;
+}
+@-webkit-keyframes Drop {
+    0% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        opacity: 0;
+    }
+
+    50% {
+        -webkit-transform: translateY(50px);
+        transform: translateY(50px);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: translateY(100px);
+        transform: translateY(100px);
+        opacity: 0.3;
+    }
+}
+
+@keyframes Drop {
+    0% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+        opacity: 0;
+    }
+
+    50% {
+        -webkit-transform: translateY(50px);
+        transform: translateY(50px);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: translateY(100px);
+        transform: translateY(100px);
+        opacity: 0.3;
+    }
+}
+
+#main {
+  height:100%;
+}

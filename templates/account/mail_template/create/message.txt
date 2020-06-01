@@ -1,0 +1,8 @@
+Dear {{ user.email }}
+
+Your registration has not done yet
+
+URL
+{{ protocol}}://{{ domain }}{% url 'account_create_complete' token %}
+
+Thanks

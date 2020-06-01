@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Django Ajax{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8 mt-5">
+                <div class="col-5 mt-5">
+                    {% for todo in object_list %}
+                        <p>{{ todo.title }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+
+img.example1 {
+width: 96px;
+height: 30px;
+}
+
+.sidebar_content {
+  margin-bottom: 100px;
+}
+.sidebar_fixed {
+  position: sticky;
+  top: 60px;
+}

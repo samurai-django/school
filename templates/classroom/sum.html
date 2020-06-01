@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Class List{% endblock title %}
+
+
+{% block head %}
+{#    <link rel="stylesheet" href="{% static 'css/account/img.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/account/profile.css' %}">
+
+{#    <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>#}
+{% endblock %}
+
+{% block content %}
+    {% for account in accounts %}
+        <p>{{ account.objects.filter(is_teacher=True).count }}</p>
+    {% endfor %}
+{% endblock %}
+
+

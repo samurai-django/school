@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Class UpdateView{% endblock %}
+
+{% block content %}
+            <div class="card border-primary mb-3" style="width: 30rem">
+                <div class="card-header">
+                    <div class="text-center">Update Account</div>
+                </div>
+
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mx-5">
+                            <p class="card-body mb-2">
+                                {{ form|crispy }}
+                            </p>
+                        </div>
+                        <a class="btn" href="{% url 'password_change' %}" role="button">Password Change</a>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
+                    </form>
+            </div>
+
+
+{% endblock %}
+

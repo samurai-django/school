@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ user.username }}-Account Information{% endblock %}
+
+{% block head %}
+
+    {#    <link rel="stylesheet" href="{% static 'css/account_info.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/account/profile.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="{{ user.image.url }}" class="example1" alt="">
+
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+                        {{ user.username }}
+					</div>
+                    <div class="email">
+                        {{ user.email }}
+                    </div>
+					<div class="profile-usertitle-job">
+						Developer
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm">Follow</button>
+					<button type="button" class="btn btn-danger btn-sm">Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+						<li class="active">
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							Overview </a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Account Settings </a>
+						</li>
+						<li>
+							<a href="#" target="_blank">
+							<i class="glyphicon glyphicon-ok"></i>
+							Tasks </a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-flag"></i>
+							Help </a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9">
+            <div class="profile-content">
+
+{% if user.is_authenticated %}
+    <p>welcome to our page {{ user.email }}</p>
+    <div class="mt-3">
+        {% for account in accounts %}
+            <div class="profile-userpic">
+                <a href="{% url 'account_info' %}"><img src="{{ account.image.url }}" class="img-responsive" alt=""></a>
+            </div>
+
+            <h1>{{ account.username }}</h1>
+            <p>{{ account.email }}</p>
+            <p>{{ account.date_joined }}</p>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="mt-3">
+        <p>you are not logged in, would you like to log in? </p>
+        <a  type="button" class="btn btn-outline-secondary" href="{% url 'login' %}">Login</a>
+
+    </div>
+{% endif %}
+
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="前へ">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        {% endif %}
+        {% for page_num in page_obj.paginator.page_range %}
+            {% if page_num == page_obj.number %}
+                <li class="page-item active">
+                    <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="次へ">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+            </div>
+		</div>
+	</div>
+
+
+{% endblock %}

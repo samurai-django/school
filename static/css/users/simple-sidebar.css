@@ -1,0 +1,96 @@
+body {
+
+  background-color :#ffffff;
+  color : #000000;
+  overflow-x: hidden;
+
+}
+#contents{
+  width:700px;
+  min-height:300px;
+  color : #000000;
+  margin-right: auto;
+  margin-left : auto;
+  margin-top:1.5%;
+  margin-bottom: 1.5%;
+  background-color :#ffffff;
+  font-size: 1.6em;
+  line-height: 1.5em;
+  border-radius: 15px;
+}
+
+img.example1 {
+width: 96px;
+height: 30px;
+}
+
+img.profile-img {
+    width: 90px;
+    height: 90px;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.profile-userpic img {
+  float: none;
+  text-align: center;
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+.sidebar_content {
+  margin-bottom: 100px;
+}
+.sidebar_fixed {
+  position: sticky;
+  top: 60px;
+}
+
+.margin-3　{
+  .mt-3 !important;
+}
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.9em 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+

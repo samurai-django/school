@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block head %}
+
+{% endblock %}
+
+{% block title %}Class Detail{% endblock %}
+
+{% block content %}
+
+
+    <p>{{ relationship2.students.username }}</p>
+    <p>{{ relationship2.students.email }}</p>
+    <p>{{ relationship2.classes.teacher }}</p>
+    <p>{{ relationship2.classes.subjects }}</p>
+
+
+
+{% endblock %}

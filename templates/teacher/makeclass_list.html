@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Class List{% endblock title %}
+
+
+{% block head %}
+{#    <link rel="stylesheet" href="{% static 'css/account/img.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/account/profile.css' %}">
+
+{#    <script type="text/javascript" src="{% static 'js/nav.js' %}"></script>#}
+{% endblock %}
+
+{% block content %}
+
+    {% for class in classes %}
+        {{ class.subject }}
+        {{ class.semester }}
+
+{#            {{ class.teacher.all }}#}
+            {{ class.teacher.all }}
+            {{ class.teacher }}
+    {% endfor %}
+
+
+{% endblock %}
